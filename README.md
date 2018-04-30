@@ -3,8 +3,9 @@
 ### Step 1: Create and run an instance on aws
 * choose ** Ubuntu Server 16.04 LTS (HVM), SSD Volume Type - ami-916f59f4 **
 * add storage (optional)
-* after successfully running an instance, you will see something like this;
-[img](https://s3-ap-southeast-1.amazonaws.com/temp-test.ml/aws-tuto/DeepinScreenshot_select-area_20180430182706.png)
+* after successfully running an instance, you will see something like this
+
+![img](https://s3-ap-southeast-1.amazonaws.com/temp-test.ml/aws-tuto/DeepinScreenshot_select-area_20180430182706.png)
 
 * Remember the ** public IP ** above, we'll be using this to find and replace.
 
@@ -29,19 +30,19 @@ After ssh login into the EC2 Instance:
 replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
 
 	* docker/dev/web/backend.conf
-replace > server_name 13.59.163.245; with > server_name *your_ip_from_step_1*
+		replace > server_name 13.59.163.245; with > server_name *your_ip_from_step_1*
 
 	* docker/dev/web/config.js
-replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+		replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
 
 	* docker/dev/web/parameters.json
-replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+		replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
 
 	* docker/prod/web/parameters.json
-replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+		replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
 
 	* frontend/rancher/entrypoint.sh
-replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+		replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
 
 
 	* frontend/src/config.js
@@ -72,12 +73,11 @@ docker-compose exec php phing setup
 * Make sure that SSH is allowed for inbound 0.0.0.0/0
 * Create a new inbound Custom TCP Rule for port 8000-9000 allowing 0.0.0.0/0. [Reference Stack-overflow link](https://stackoverflow.com/questions/17529794/amazon-ec2-access-application-through-specific-port)
 * After starting Open Loyalty it's exposes services under following URLs:
-
- * http://your_instance_ip:8182 - the administration panel,
- * http://your_instance_ip:8183 - the customer panel,
- * http://your_instance_ip:8184 - the merchant panel,
- * http://your_instance_ip:8181 - RESTful API port
- * http://your_instance_ip/doc - swagger-like API doc
+	* http://your_instance_ip:8182 - the administration panel,
+	* http://your_instance_ip:8183 - the customer panel,
+	* http://your_instance_ip:8184 - the merchant panel,
+	* http://your_instance_ip:8181 - RESTful API port
+	* http://your_instance_ip/doc - swagger-like API doc
 
 
 
