@@ -27,22 +27,22 @@ After ssh login into the EC2 Instance:
 * clone this repo
 * Make changes to following files:
 	* backend/doc/api/settings.rst
-replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+		* replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
 
 	* docker/dev/web/backend.conf
-		replace > server_name 13.59.163.245; with > server_name *your_ip_from_step_1*
+		* replace > server_name 13.59.163.245; with > server_name *your_ip_from_step_1*
 
 	* docker/dev/web/config.js
-		replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+		* replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
 
 	* docker/dev/web/parameters.json
-		replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+		* replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
 
 	* docker/prod/web/parameters.json
-		replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+		* replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
 
 	* frontend/rancher/entrypoint.sh
-		replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+		* replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
 
 
 	* frontend/src/config.js
