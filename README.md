@@ -1,4 +1,88 @@
-[![Build Status](https://travis-ci.org/DivanteLtd/open-loyalty.svg?branch=master)](https://travis-ci.org/DivanteLtd/open-loyalty)
+# Open Loyalty on AWS installation
+
+### Step 1: Create and run an instance on aws
+* choose ** Ubuntu Server 16.04 LTS (HVM), SSD Volume Type - ami-916f59f4 **
+* add storage (optional)
+* after successfully running an instance, you will see something like this;
+[img](https://s3-ap-southeast-1.amazonaws.com/temp-test.ml/aws-tuto/DeepinScreenshot_select-area_20180430182706.png)
+
+* Remember the ** public IP ** above, we'll be using this to find and replace.
+
+### Step 2: Login to your Instance
+* Generate a Key pair from AWS console> Network & Security > Key Pairs
+* use the key to Login to Instance
+```
+chmod 400 /path/my-key-pair.pem
+```
+* Use the ssh command to connect to the instance. You specify the private key (.pem) file and user_name@public_dns_name. For example, if you used an Amazon Linux AMI, the user name is ec2-user.
+
+```
+ssh -i /path/my-key-pair.pem ec2-user@ec2-198-51-100-1.compute-1.amazonaws.com
+```
+
+### Step 3: Installation on EC2
+After ssh login into the EC2 Instance:
+* Install *docker* and *docker-compose* useful link : [Docker](https://www.docker.com/>)
+* clone this repo
+* Make changes to following files:
+	* backend/doc/api/settings.rst
+replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+
+	* docker/dev/web/backend.conf
+replace > server_name 13.59.163.245; with > server_name *your_ip_from_step_1*
+
+	* docker/dev/web/config.js
+replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+
+	* docker/dev/web/parameters.json
+replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+
+	* docker/prod/web/parameters.json
+replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+
+	* frontend/rancher/entrypoint.sh
+replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+
+
+	* frontend/src/config.js
+replace all the occurrance of > 13.59.163.245 to > *your_ip_from_step_1*
+
+### Step 4: Running the application
+* Go to the docker directory:
+
+```
+cd docker
+```
+
+* Execute bellow command to run application: 
+
+```
+docker-compose up
+```
+
+* Then use another command to setup database, Elasticsearch and load some demo data:
+
+```
+docker-compose exec php phing setup
+```
+
+### Step 5: Accessing the application
+* Go to EC2 > Security Groups
+* Either select an existing Security Group or create one
+* Make sure that SSH is allowed for inbound 0.0.0.0/0
+* Create a new inbound Custom TCP Rule for port 8000-9000 allowing 0.0.0.0/0. [Reference Stack-overflow link](https://stackoverflow.com/questions/17529794/amazon-ec2-access-application-through-specific-port)
+* After starting Open Loyalty it's exposes services under following URLs:
+
+ * http://your_instance_ip:8182 - the administration panel,
+ * http://your_instance_ip:8183 - the customer panel,
+ * http://your_instance_ip:8184 - the merchant panel,
+ * http://your_instance_ip:8181 - RESTful API port
+ * http://your_instance_ip/doc - swagger-like API doc
+
+
+
+
+
 
 # Open Loyalty
 
@@ -19,89 +103,10 @@ There is variety of applications for Open Loyalty. Based on it you can build loy
 ![eCommerce Cockpit](https://cloud.githubusercontent.com/assets/26326842/24359495/d65c1210-1304-11e7-86bf-9e63ab754360.png)
 ![POS Cockpit](https://cloud.githubusercontent.com/assets/26326842/24359465/b796e260-1304-11e7-9da5-4bfc0a026a16.png)
 
-## Quick install
 
-This project has full support for running in [Docker](https://www.docker.com/>).
-
-Go to the docker directory:
-
-```
-cd docker
-```
-
-Execute bellow command to run application: 
-
-```
-docker-compose up
-```
-
-Then use another command to setup database, Elasticsearch and load some demo data:
-
-```
-docker-compose exec php phing setup
-```
-
-Before you start using Open Loyalty you need to define hosts in your local environment. Add host 13.59.163.245 as 127.0.0.1 in your system configuration file (/etc/hosts).
-If you find any problems using docker (for example on Windows environments) please try our Vagrant recipe.
-
-## Quick install with Vagrant
-
-You should have [Vagrant](https://www.vagrantup.com/downloads.html) and [Virtualbox](https://www.virtualbox.org/wiki/Downloads) installed prior to executing this recipe.
-
-Then, please execute following commands:
-
-```
-vagrant up
-vagrant ssh
-docker-compose -f docker/docker-compose.yml up -d
-docker-compose -f docker/docker-compose.yml exec php phing demo 
-```
-
-That's all. Now you can go to admin panel [13.59.163.245:8182](http://13.59.163.245:8182).
-Default login is **admin** and password **open**. You can also go to customer panel [13.59.163.245:8183](http://13.59.163.245:8183).
-
-## Vagrant helpful commands
-
-- `vagrant provision --provision-with sync` sync current dir
-- `vagrant provision --provision-with build` rebuild docker base images
-
-## Url access
-
-After starting Open Loyalty it's exposes services under following URLs:
-
- * http://13.59.163.245:8182 - the administration panel,
- * http://13.59.163.245:8183 - the customer panel,
- * http://13.59.163.245:8184 - the merchant panel,
- * http://13.59.163.245:8181 - RESTful API port
- * http://13.59.163.245:8181/doc - swagger-like API doc
 
 If you are developer and want to attach source code then:
 
 ```
 docker-compose -f docker/docker-compose.yml -f docker/docker-compose.dev.yml up
 ```
-
-## Url access for developer
-After starting Open Loyalty in developer mode it's exposes services under slightly different URLs:
-
- * http://13.59.163.245:8081/admin - the administration panel,
- * http://13.59.163.245:8081/client - the customer panel,
- * http://13.59.163.245:8081/pos - the merchant panel,
- * http://13.59.163.245 - RESTful API port
- * http://13.59.163.245/app_dev.php/doc - swagger-like API doc
-
-## Generate JWT keys
-
-Running `phing setup` will generate the JWT public/private keys for you, but in case you would like to generate them "manually" use `phing generate-jwt-keys`.
-
-## Documentation
-
-Technical documentation is located [here](backend/doc/index.rst).
-
-## Looking for a demo?
-If you need to see a demo of Open Loyalty, drop us a line via the form at the official landing page http://www.openloyalty.io/. 
-
-## CONTRIBUTING
-If you wish to contribute to Open Loyalty, please read the CONTRIBUTING.md file.
-# open-loyalty
-# ol-aws
