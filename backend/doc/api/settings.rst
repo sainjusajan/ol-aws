@@ -27,7 +27,7 @@ Example
 
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/admin/customer-statuses \
+	curl http://18.217.98.119:8181/api/admin/customer-statuses \
 	    -X "GET" \
 	    -H "Accept: application/json" \
 	    -H "Content-type: application/x-www-form-urlencoded" \
@@ -82,7 +82,7 @@ Example
 
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/admin/translations \
+	curl http://18.217.98.119:8181/api/admin/translations \
 	    -X "GET" \
 	    -H "Accept: application/json" \
 	    -H "Content-type: application/x-www-form-urlencoded" \
@@ -142,7 +142,7 @@ Example
 
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/admin/translations \
+	curl http://18.217.98.119:8181/api/admin/translations \
 	    -X "POST" \
 	    -H "Accept: application/json" \
 	    -H "Content-type: application/x-www-form-urlencoded" \
@@ -192,7 +192,7 @@ Example
 
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/admin/translations/english.json \
+	curl http://18.217.98.119:8181/api/admin/translations/english.json \
 	    -X "GET" \
 	    -H "Accept: application/json" \
 	    -H "Content-type: application/x-www-form-urlencoded" \
@@ -244,7 +244,7 @@ Example
 
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/admin/translations/english.json \
+	curl http://18.217.98.119:8181/api/admin/translations/english.json \
 	    -X "PUT" \
 	    -H "Accept: application/json" \
 	    -H "Content-type: application/x-www-form-urlencoded" \
@@ -289,7 +289,7 @@ Example
 
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/settings \
+	curl http://18.217.98.119:8181/api/settings \
 	    -X "GET" \
 	    -H "Accept: application/json" \
 	    -H "Content-type: application/x-www-form-urlencoded" \
@@ -420,7 +420,7 @@ Example
 
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/settings \
+	curl http://18.217.98.119:8181/api/settings \
 	    -X "POST" \
 	    -H "Accept: application/json" \
 	    -H "Content-type: application/x-www-form-urlencoded" \
@@ -488,7 +488,7 @@ Example
 
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/settings/choices/language \
+	curl http://18.217.98.119:8181/api/settings/choices/language \
 	    -X "GET" \
 	    -H "Accept: application/json" \
 	    -H "Content-type: application/x-www-form-urlencoded" \
@@ -560,7 +560,7 @@ Example
 
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/settings/emails \
+	curl http://18.217.98.119:8181/api/settings/emails \
 	    -X "GET" \
 	    -H "Accept: application/json" \
 	    -H "Content-type: application/x-www-form-urlencoded" \
@@ -666,7 +666,7 @@ Example
  
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/settings/emails/c60f1033-b1d0-4033-b9fe-7a3c230c4479 \
+	curl http://18.217.98.119:8181/api/settings/emails/c60f1033-b1d0-4033-b9fe-7a3c230c4479 \
 		-X "GET" \
 		-H "Accept: application/json" \
 		-H "Content-type: application/x-www-form-urlencoded" \
@@ -735,7 +735,7 @@ Example
 		
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/settings/emails/f4f0e1f9-3677-4bdb-9685-416a961bc319 \
+	curl http://18.217.98.119:8181/api/settings/emails/f4f0e1f9-3677-4bdb-9685-416a961bc319 \
 	    -X "PUT" \
 	    -H "Accept: application/json" \
 	    -H "Content-type: application/x-www-form-urlencoded" \
@@ -785,7 +785,7 @@ Example
 		
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/settings/logo \
+	curl http://18.217.98.119:8181/api/settings/logo \
 	    -X "DELETE" \
 	    -H "Accept: application/json" \
 	    -H "Content-type: application/x-www-form-urlencoded" \
@@ -828,7 +828,7 @@ Example
 
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/settings/logo \
+	curl http://18.217.98.119:8181/api/settings/logo \
 	    -X "GET" \
 	    -H "Accept: application/json" \
 	    -H "Content-type: application/x-www-form-urlencoded" \
@@ -870,7 +870,7 @@ Example
 
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/settings/logo \
+	curl http://18.217.98.119:8181/api/settings/logo \
 	    -X "POST" \
 	    -H "Accept: application/json" \
 	    -H "Content-type: application/x-www-form-urlencoded" \
@@ -913,7 +913,7 @@ Example
 
 .. code-block:: bash
 
-	curl http://13.59.163.245:8181/api/translations \
+	curl http://18.217.98.119:8181/api/translations \
 	    -X "GET" \
 	    -H "Accept: application/json" \
 	    -H "Content-type: application/x-www-form-urlencoded" \

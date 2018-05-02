@@ -71,7 +71,7 @@ Vagrant.configure("2") do |config|
 
         chown -R www-data:www-data /opt/open-loyalty/
 
-        sed -i  's/13.59.163.245/localhost:8181/g' /opt/open-loyalty/frontend/src/config.js
+        sed -i  's/18.217.98.119/localhost:8181/g' /opt/open-loyalty/frontend/src/config.js
 
         echo ""
         echo "You can always sync files using:"

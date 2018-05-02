@@ -1,5 +1,5 @@
 {
-    "apiUrl": "http://13.59.163.245/app_dev.php/api",
+    "apiUrl": "http://18.217.98.119/app_dev.php/api",
     "dateFormat": "YYYY-MM-DD",
     "dateTimeFormat": "YYYY-MM-DD HH:mm",
     "perPage": 20,
